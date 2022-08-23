@@ -24,6 +24,7 @@ namespace AupDotNetTests.ExEdit
         [DataRow(@"TestData\Exedit\Group.aup", 1)]
         public void Test_Write(string filename, int scene)
         {
+            filename = filename.Replace('\\', Path.DirectorySeparatorChar);
             AviUtlProject aup = new AviUtlProject(filename);
             ExEditProject exedit = ExeditTestUtil.GetExEdit(aup);
 

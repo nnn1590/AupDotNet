@@ -32,6 +32,7 @@ namespace AupDotNetTests
         [DataRow(@"TestData\EditHandle\640x480_2997-100fps_44100Hz.aup")]
         public void Test_Read(string filename)
         {
+            filename = filename.Replace('\\', Path.DirectorySeparatorChar);
             AviUtlProject aup = new AviUtlProject(filename);
             string jsonPath = Path.Combine(
                 Path.GetDirectoryName(filename),
@@ -58,6 +59,7 @@ namespace AupDotNetTests
         [DataRow(@"TestData\EditHandle\640x480_2997-100fps_44100Hz.aup")]
         public void Test_ReadWriteRead(string filename)
         {
+            filename = filename.Replace('\\', Path.DirectorySeparatorChar);
             AviUtlProject srcAup = new AviUtlProject(filename);
             AviUtlProject dstAup;
             using (var ms = new MemoryStream())
@@ -135,6 +137,7 @@ namespace AupDotNetTests
         [DataRow(@"TestData\Exedit\Group.aup")]
         public void Test_FrameData(string filename)
         {
+            filename = filename.Replace('\\', Path.DirectorySeparatorChar);
             AviUtlProject aup = new AviUtlProject(filename);
             var edit1 = aup.EditHandle;
 
@@ -183,6 +186,7 @@ namespace AupDotNetTests
         [DataRow(@"TestData\ClippedImage\colorful.zip")]
         public void Test_ClippedImage(string path)
         {
+            path = path.Replace('\\', Path.DirectorySeparatorChar);
             using (var archive = ZipFile.OpenRead(path))
             {
                 var aupPath = Path.GetFileNameWithoutExtension(path) + ".aup";

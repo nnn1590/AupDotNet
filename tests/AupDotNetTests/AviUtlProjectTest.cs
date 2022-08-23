@@ -20,6 +20,7 @@ namespace AupDotNetTests
         [DataRow(@"TestData\Exedit\Group.aup")]
         public void Test_DataBeforeFooter(string filename)
         {
+            filename = filename.Replace('\\', Path.DirectorySeparatorChar);
             AviUtlProject aup = new AviUtlProject(filename);
             Assert.AreEqual(0, aup.DataBeforeFooter.Length);
         }
@@ -34,6 +35,7 @@ namespace AupDotNetTests
         [DataRow(@"TestData\Exedit\Group.aup")]
         public void Test_ReadWriteReadWrite(string filename)
         {
+            filename = filename.Replace('\\', Path.DirectorySeparatorChar);
             AviUtlProject aup = new AviUtlProject(filename);
             using (var ms = new MemoryStream())
             using (var bw = new BinaryWriter(ms))
@@ -63,6 +65,7 @@ namespace AupDotNetTests
         [DataRow(@"TestData\Exedit\Group.aup")]
         public void Test_FilterProjects(string filename)
         {
+            filename = filename.Replace('\\', Path.DirectorySeparatorChar);
             AviUtlProject aup1 = new AviUtlProject(filename);
 
             string dirname = Path.GetDirectoryName(filename);

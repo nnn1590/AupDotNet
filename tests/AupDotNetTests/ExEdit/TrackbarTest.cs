@@ -152,6 +152,7 @@ namespace AupDotNetTests.ExEdit
         [DataRow(@"TestData\Exedit\Trackbar.aup")]
         public void Test_Read(string filename)
         {
+            filename = filename.Replace('\\', Path.DirectorySeparatorChar);
             AviUtlProject aup = new AviUtlProject(filename);
             ExEditProject exedit = ExeditTestUtil.GetExEdit(aup);
             string jsonPath = Path.Combine(

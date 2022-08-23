@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using Karoterra.AupDotNet;
 using Karoterra.AupDotNet.ExEdit;
 using Karoterra.AupDotNet.ExEdit.Effects;
@@ -136,7 +137,7 @@ namespace AupDotNetTests.ExEdit
         [TestMethod]
         public void Test_DefaultsWithAup()
         {
-            AviUtlProject aup = new AviUtlProject(@"TestData\Exedit\EffectSet01.aup");
+            AviUtlProject aup = new AviUtlProject($"TestData{Path.DirectorySeparatorChar}Exedit{Path.DirectorySeparatorChar}EffectSet01.aup");
             ExEditProject exedit = ExeditTestUtil.GetExEdit(aup);
             Assert.AreEqual(exedit.EffectTypes.Count, EffectType.Defaults.Length);
             foreach (var (expected, actual) in exedit.EffectTypes.Zip(EffectType.Defaults, (x, y) => (x, y)))

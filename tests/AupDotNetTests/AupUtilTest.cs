@@ -29,8 +29,8 @@ namespace AupDotNetTests
         [DataRow("c4r3")]
         public void Test_Comp(string name)
         {
-            byte[] raw = File.ReadAllBytes($@"TestData\CompDecomp\{name}_raw.dat");
-            byte[] comp = File.ReadAllBytes($@"TestData\CompDecomp\{name}_comp.dat");
+            byte[] raw = File.ReadAllBytes($"TestData{Path.DirectorySeparatorChar}CompDecomp{Path.DirectorySeparatorChar}{name}_raw.dat");
+            byte[] comp = File.ReadAllBytes($"TestData{Path.DirectorySeparatorChar}CompDecomp{Path.DirectorySeparatorChar}{name}_comp.dat");
 
             using (var stream = new MemoryStream())
             using (var writer = new BinaryWriter(stream))
@@ -63,9 +63,9 @@ namespace AupDotNetTests
         [DataRow("c4r3")]
         public void Test_Decomp(string name)
         {
-            byte[] raw = File.ReadAllBytes($@"TestData\CompDecomp\{name}_raw.dat");
+            byte[] raw = File.ReadAllBytes($"TestData{Path.DirectorySeparatorChar}CompDecomp{Path.DirectorySeparatorChar}{name}_raw.dat");
 
-            using (var stream = File.OpenRead($@"TestData\CompDecomp\{name}_comp.dat"))
+            using (var stream = File.OpenRead($"TestData{Path.DirectorySeparatorChar}CompDecomp{Path.DirectorySeparatorChar}{name}_comp.dat"))
             using (var reader = new BinaryReader(stream))
             {
                 var actual = new byte[raw.Length];

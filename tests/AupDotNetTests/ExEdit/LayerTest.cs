@@ -17,6 +17,7 @@ namespace AupDotNetTests.ExEdit
         [DataRow(@"TestData\Exedit\LayerScene.aup")]
         public void Test_Read(string filename)
         {
+            filename = filename.Replace('\\', Path.DirectorySeparatorChar);
             AviUtlProject aup = new AviUtlProject(filename);
             ExEditProject exedit = ExeditTestUtil.GetExEdit(aup);
             string jsonPath = Path.Combine(
@@ -39,6 +40,7 @@ namespace AupDotNetTests.ExEdit
         [DataRow(@"TestData\Exedit\Layer01.dat")]
         public void Test_Dump(string filename)
         {
+            filename = filename.Replace('\\', Path.DirectorySeparatorChar);
             var expected = File.ReadAllBytes(filename);
             Layer layer = new Layer(expected);
             var actual = new byte[Layer.Size];

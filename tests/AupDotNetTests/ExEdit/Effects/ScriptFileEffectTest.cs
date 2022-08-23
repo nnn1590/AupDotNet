@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 using Karoterra.AupDotNet.ExEdit.Effects;
 
 namespace AupDotNetTests.ExEdit.Effects
@@ -22,7 +23,7 @@ namespace AupDotNetTests.ExEdit.Effects
                 "*",
                 "a=0;",
                 "local p0=\"abc\";local p1=123;",
-                @"file=""C:\\path\\to\\file.jpg""",
+                $@"file=""C:{Path.DirectorySeparatorChar}{Path.DirectorySeparatorChar}path{Path.DirectorySeparatorChar}{Path.DirectorySeparatorChar}to{Path.DirectorySeparatorChar}{Path.DirectorySeparatorChar}file.jpg""",
                 "s=\"abc;xyz\"",
                 "s1=\"abc;xyz\";s2=\"a;b\\\"c\";",
             };
@@ -33,7 +34,7 @@ namespace AupDotNetTests.ExEdit.Effects
                 null,
                 new Params() { { "a", "0" } },
                 new Params() { { "local p0", "\"abc\"" }, { "local p1", "123" } },
-                new Params() { { "file", @"""C:\\path\\to\\file.jpg""" } },
+                new Params() { { "file", $@"""C:{Path.DirectorySeparatorChar}{Path.DirectorySeparatorChar}path{Path.DirectorySeparatorChar}{Path.DirectorySeparatorChar}to{Path.DirectorySeparatorChar}{Path.DirectorySeparatorChar}file.jpg""" } },
                 new Params() { { "s", "\"abc;xyz\"" } },
                 new Params() { { "s1", "\"abc;xyz\"" }, { "s2", "\"a;b\\\"c\"" } },
             };

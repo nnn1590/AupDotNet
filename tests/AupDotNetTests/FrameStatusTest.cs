@@ -34,6 +34,7 @@ namespace AupDotNetTests
         [DataRow(@"TestData\FrameStatus\Equals_012.json")]
         public void Test_Equals(string path)
         {
+            path = path.Replace('\\', Path.DirectorySeparatorChar);
             var json = File.ReadAllText(path);
             var data = JsonSerializer.Deserialize<EqualData>(json);
             bool actual = data.A.Equals(data.B);

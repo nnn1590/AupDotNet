@@ -90,6 +90,7 @@ namespace AupDotNetTests.ExEdit
         [DataRow(@"TestData\Exedit\Trackbar.aup")]
         public void Test_Read(string filename)
         {
+            filename = filename.Replace('\\', Path.DirectorySeparatorChar);
             AviUtlProject aup = new AviUtlProject(filename);
             ExEditProject exedit = ExeditTestUtil.GetExEdit(aup);
             string jsonPath = Path.Combine(
@@ -142,6 +143,7 @@ namespace AupDotNetTests.ExEdit
         [DataRow(@"TestData\Exedit\Trackbar.aup")]
         public void Test_ReadDump(string filename)
         {
+            filename = filename.Replace('\\', Path.DirectorySeparatorChar);
             AviUtlProject aup = new AviUtlProject(filename);
             RawFilterProject raw = aup.FilterProjects
                 .Where(f => f.Name == "拡張編集")
@@ -164,6 +166,7 @@ namespace AupDotNetTests.ExEdit
         [DataRow(@"TestData\Exedit\Trackbar.aup")]
         public void Test_ReadDumpRead(string filename)
         {
+            filename = filename.Replace('\\', Path.DirectorySeparatorChar);
             AviUtlProject aup = new AviUtlProject(filename);
             ExEditProject src = ExeditTestUtil.GetExEdit(aup);
             var data = src.DumpData();
@@ -191,6 +194,7 @@ namespace AupDotNetTests.ExEdit
         [DataRow(@"TestData\Exedit\Trackbar.aup")]
         public void Test_ReadDumpReadDump(string filename)
         {
+            filename = filename.Replace('\\', Path.DirectorySeparatorChar);
             AviUtlProject aup = new AviUtlProject(filename);
             ExEditProject exedit = ExeditTestUtil.GetExEdit(aup);
             var expected = exedit.DumpData();
