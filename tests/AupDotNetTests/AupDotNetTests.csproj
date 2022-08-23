@@ -25,8 +25,14 @@
     <PackageReference Include="System.Text.Json" Version="6.0.1" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(OS)' == 'Windows_NT'">
     <Exec Command="xcopy &quot;$(SolutionDir)\testdata\&quot; &quot;$(TargetDir)\TestData\&quot; /D/E/I/Y" />
+  </Target>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(OS)' != 'Windows_NT'">
+    <Exec Command="rm -rf &apos;$(TargetDir)/TestData&apos;" />
+    <Exec Command="cp -R &apos;$(SolutionDir)/testdata&apos; &apos;$(TargetDir)/TestData&apos;" />
+    <!-- <Exec Command="cp -rTu &apos;$(SolutionDir)/testdata&apos; &apos;$(TargetDir)/TestData/&apos;" /> --> <!-- GNU版cp用 -->
   </Target>
 
 </Project>
